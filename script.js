@@ -4,7 +4,8 @@
 //Create a variable to store computerSelection.
 //let computerSelection = computerPlay(); This generated one random value without chaging to a new random.
 //Create a variable to store userSelection.
-let userSelection = userPlay;
+let userPlay = prompt("Choose your tool! Rock, Paper, or Scissors?").toLowerCase();
+//let userSelection = userPlay; This w
 //Create variable for roundNumber [].
 //    - initVal = 1
 let roundNumber = [];
@@ -25,8 +26,8 @@ function computerPlay() {
             break;
         }
 }
-
 //Get input from user to store in usersPlay via prompt.
+
 //Compare computersPlay to usersPlay.
 //    - convert usersPlay toLowerCase.
 //    - rock > scissors
