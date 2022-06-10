@@ -40,18 +40,25 @@ function computerPlay() {
 //    - If userWon ? true : false
 function playRound(userSelection, computerSelection) {
     if (userSelection == computerSelection) {
+        console.log("Tied!");
         return roundsTied = roundsTied + 1;
     } else if (userSelection == 'rock' && computerSelection == 'scissors') {
+        console.log("Winner!");
         return roundsWon = roundsWon + 1;
     } else if (userSelection == 'rock' && computerSelection == 'paper') {
+        console.log("Loser!");
         return roundsLost = roundsLost + 1;
     } else if (userSelection == 'scissors' && computerSelection == 'paper') {
+        console.log("Winner!");
         return roundsWon = roundsWon + 1;
     } else if (userSelection == 'scissors' && computerSelection == 'rock') {
+        console.log("Loser!");
         return roundsLost = roundsLost + 1;
     } else if (userSelection == 'paper' && computerSelection == 'rock') {
+        console.log("Winner!");
         return roundsWon = roundsWon + 1;
     } else if (userSelection == 'paper' && computerSelection == 'scissors') {
+        console.log("Loser!");
         return roundsLost = roundsLost + 1;
     }
 }
