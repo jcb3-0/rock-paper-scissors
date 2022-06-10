@@ -10,10 +10,10 @@ function userPlay() {
 }
 //Create variable for roundNumber [].
 //    - initVal = 1
-let roundNumber = [];
+
 //Create variable to store number of rounds won.
-let userRoundsWon = 0;
-let computerRoundsWon = 0;
+let roundsWon = 0;
+let roundsLost = 0;
 let roundsTied = 0;
 //Generate a random play from computer to store in computerSelection.
 //    - Math.floor(Math.random() * 3) to get random number.
@@ -38,69 +38,71 @@ function computerPlay() {
 //    - scissors > paper
 //    - paper > rock
 //    - If userWon ? true : false
-function playRound() {
-    computerSelection = computerPlay();
-    userSelection = userPlay();
-    return didUserWinRound();
+function playRound(userSelection, computerSelection) {
+    if (userSelection == computerSelection) {
+        return roundsTied = roundsTied + 1;
+    } else if (userSelection == 'rock' && computerSelection == 'scissors') {
+        return roundsWon = roundsWon + 1;
+    } else if (userSelection == 'rock' && computerSelection == 'paper') {
+        return roundsLost = roundsLost + 1;
+    } else if (userSelection == 'scissors' && computerSelection == 'paper') {
+        return roundsWon = roundsWon + 1;
+    } else if (userSelection == 'scissors' && computerSelection == 'rock') {
+        return roundsLost = roundsLost + 1;
+    } else if (userSelection == 'paper' && computerSelection == 'rock') {
+        return roundsWon = roundsWon + 1;
+    } else if (userSelection == 'paper' && computerSelection == 'scissors') {
+        return roundsLost = roundsLost + 1;
+    }
 }
 
 //Tell user usersPlay, computersPlay, and rounds won/lost/tied via alert.
-function didUserWinRound () { 
-    if (userSelection == computerSelection) {
-        console.log(`You chose ${userSelection}. Computer chose ${computerSelection}.  You tied.`);
-        return roundsTied = roundsTied + 1;
-    } else if (userSelection == 'rock' && computerSelection == 'scissors') {
-        console.log(`You chose ${userSelection}. Computer chose ${computerSelection}.  You win.`);
-        return userRoundsWon = userRoundsWon + 1;
-    } else if (userSelection == 'rock' && computerSelection == 'paper') {
-        console.log(`You chose ${userSelection}. Computer chose ${computerSelection}.  You lose.`)
-        return computerRoundsWon = computerRoundsWon + 1;
-    } else if (userSelection == 'scissors' && computerSelection == 'paper') {
-        console.log(`You chose ${userSelection}. Computer chose ${computerSelection}.  You win.`);
-        return userRoundsWon = userRoundsWon + 1;
-    } else if (userSelection == 'scissors' && computerSelection == 'rock') {
-        console.log(`You chose ${userSelection}. Computer chose ${computerSelection}.  You lose.`)
-        return computerRoundsWon = computerRoundsWon + 1;
-    } else if (userSelection == 'paper' && computerSelection == 'rock') {
-        console.log(`You chose ${userSelection}. Computer chose ${computerSelection}.  You win.`);
-        return userRoundsWon = userRoundsWon + 1;
-    } else if (userSelection == 'paper' && computerSelection == 'scissors') {
-        console.log(`You chose ${userSelection}. Computer chose ${computerSelection}.  You lose.`)
-        return computerRoundsWon = computerRoundsWon + 1;
-    }
-}
 
 
 
 function playGame() {
     for (i = 1; i <= 5; i++) {
         //If round n <= 5, move to next round and store round n outcome (userWon) to roundNumber variable.
-        roundNumber.push(playRound());
-        console.log(roundNumber);
-        alert(`You chose ${userSelection} Computer chose ${computerSelection}.
-        Rounds won: ${userRoundsWon} 
-        Rounds lost: ${computerRoundsWon} 
+        userSelection = userPlay();
+        computerSelection = computerPlay();
+        playRound(userSelection, computerSelection);
+        console.log(`You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        alert(`You chose ${userSelection}. Computer chose ${computerSelection}.
+        Rounds won: ${roundsWon} 
+        Rounds lost: ${roundsLost} 
         Rounds tied: ${roundsTied}`);
         /*if (roundNumber[i - 1] === true) {
-            userRoundsWon = userRoundsWon + 1;
+            roundsWon = roundsWon + 1;
         }*/
     }
     //Else tell user the outcome of the game.
     //    - If user wins/loses 3 rounds, tell user rounds won, and you won/lost game via alert.
-    if (userRoundsWon > computerRoundsWon) {
-        alert(`Congratulations! You won!!! 
-        Rounds won: ${userRoundsWon} 
-        Rounds lost: ${computerRoundsWon} 
+    if (roundsWon > roundsLost) {
+        console.log(`Congratulations! You won!!!! 
+        Rounds won: ${roundsWon} 
+        Rounds lost: ${roundsLost} 
         Rounds tied: ${roundsTied}`);
-    } else if (computerRoundsWon > userRoundsWon) {
-        alert(`Whomp! Whomp! The computer won! 
-        Rounds won: ${userRoundsWon} 
-        Rounds lost: ${computerRoundsWon} 
+        alert(`Congratulations! You won!!! 
+        Rounds won: ${roundsWon} 
+        Rounds lost: ${roundsLost} 
+        Rounds tied: ${roundsTied}`);
+    } else if (roundsLost > roundsWon) {
+        console.log(`Too bad. You lost! 
+        Rounds won: ${roundsWon} 
+        Rounds lost: ${roundsLost} 
+        Rounds tied: ${roundsTied}`);
+        alert(`Too bad. You lost! 
+        Rounds won: ${roundsWon} 
+        Rounds lost: ${roundsLost} 
         Rounds tied: ${roundsTied}`)
-    } else if (userRoundsWon == computerRoundsWon) {
+    } else if (roundsWon == roundsLost) {
+        console.log(`You tied! 
+        Rounds won: ${roundsWon} 
+        Rounds lost: ${roundsLost} 
+        Rounds tied: ${roundsTied}`);
         alert(`You tied! 
-        Rounds won: ${userRoundsWon} 
-        Rounds lost: ${computerRoundsWon} 
+        Rounds won: ${roundsWon} 
+        Rounds lost: ${roundsLost} 
         Rounds tied: ${roundsTied}`);
     }
 }
