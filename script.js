@@ -1,23 +1,15 @@
-//SEMI-FUNCTIONAL...COUNTS TIES AS LOSSES. SHOULD BE BEST OUT OF 5...
 
-//Create a variable to store computerSelection.
-let computerSelection; //This generated one random value without chaging to a new random.
-//Create a variable to store userSelection.
-//Get input from user to store in usersPlay via prompt.
+//Create variables to store computerSelection, userSelection, and rounds won.
+let computerSelection; 
 let userSelection;
-function userPlay() {
-   return prompt("Choose your tool! Rock, Paper, or Scissors?").toLowerCase()
-}
-//Create variable for roundNumber [].
-//    - initVal = 1
-
-//Create variable to store number of rounds won.
 let roundsWon = 0;
 let roundsLost = 0;
 let roundsTied = 0;
-//Generate a random play from computer to store in computerSelection.
-//    - Math.floor(Math.random() * 3) to get random number.
-//    - assign random number to rock, paper, scissors
+//Get input from user to store in usersPlay via prompt and convert toLowerCase.
+function userPlay() {
+   return prompt("Choose your tool! Rock, Paper, or Scissors?").toLowerCase()
+}
+//Generate a random play from computer.
 function computerPlay() {
     let n = Math.floor(Math.random() * 3);
         switch (n) {
@@ -33,11 +25,10 @@ function computerPlay() {
         }
 }
 //Compare computersPlay to usersPlay.
-//    - convert usersPlay toLowerCase.
 //    - rock > scissors
 //    - scissors > paper
 //    - paper > rock
-//    - If userWon ? true : false
+//    - return who won
 function playRound(userSelection, computerSelection) {
     if (userSelection == computerSelection) {
         console.log("Tied!");
@@ -66,10 +57,9 @@ function playRound(userSelection, computerSelection) {
 //Tell user usersPlay, computersPlay, and rounds won/lost/tied via alert.
 
 
-
+//If round n <= 5, move to next round and store round and display wins/losses.
 function playGame() {
     for (i = 1; i <= 5; i++) {
-        //If round n <= 5, move to next round and store round n outcome (userWon) to roundNumber variable.
         userSelection = userPlay();
         computerSelection = computerPlay();
         playRound(userSelection, computerSelection);
@@ -78,12 +68,9 @@ function playGame() {
         Rounds won: ${roundsWon} 
         Rounds lost: ${roundsLost} 
         Rounds tied: ${roundsTied}`);
-        /*if (roundNumber[i - 1] === true) {
-            roundsWon = roundsWon + 1;
-        }*/
     }
-    //Else tell user the outcome of the game.
-    //    - If user wins/loses 3 rounds, tell user rounds won, and you won/lost game via alert.
+//Else tell user the outcome of the game.
+//    - If wins > losses, tell user rounds won/lost/tied, and who won/lost game.
     if (roundsWon > roundsLost) {
         console.log(`Congratulations! You won!!!! 
         Rounds won: ${roundsWon} 
@@ -116,37 +103,3 @@ function playGame() {
 
 playGame();
 
-
-
-/*
-playGame() calls playRound().  playRound() gets userPlay and calls computerPlay().
-*/
-
-
-//Create a variable to store computerSelection.
-//let computerSelection = computerPlay(); //This generated one random value without chaging to a new random.
-//Create a variable to store userSelection.
-//Get input from user to store in usersPlay via prompt.
-//let userSelection = userPlay();
-//Create variable for roundNumber [].
-//    - initVal = 1
-//Generate a random play from computer to store in computerSelection.
-//    - Math.floor(Math.random() * 3) to get random number.
-//    - assign random number to rock, paper, scissors
-//Compare computersPlay to usersPlay.
-//    - convert usersPlay toLowerCase.
-//    - rock > scissors
-//    - scissors > paper
-//    - paper > rock
-//    - If userWon ? true : false
-//Store round n outcome (userWon) to roundNumber variable.
-//Tell user usersPlay, computersPlay, and rounds won/lost/tied via alert.
-//If round n <= 5, move to next round.
-//Else tell user the outcome of the game.
-//    - If user wins/loses 3 rounds, tell user rounds won, and you won/lost game via alert.
-//    -
-
-/*
-playGame() calls playRound() if rounds <= 5.  else it returns the winner.  playRound() calls userPlay() and computerPlay() and returns values to variables. 
-userWon() compares outcomes and returns boolean.
-*/
