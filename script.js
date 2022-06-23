@@ -5,6 +5,14 @@ let userSelection;
 let roundsWon = 0;
 let roundsLost = 0;
 let roundsTied = 0;
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+rock.addEventListener('click', () => {return 'rock'});
+paper.addEventListener('click', () => {return 'paper'});
+scissors.addEventListener('click', () => {return 'scissors'});
+
 //Get input from user to store in usersPlay via prompt and convert toLowerCase.
 function userPlay() {
    return prompt("Choose your tool! Rock, Paper, or Scissors?").toLowerCase()
@@ -30,26 +38,35 @@ function computerPlay() {
 //    - paper > rock
 //    - return who won
 function playRound(userSelection, computerSelection) {
+    userSelection = userPlay();
+    computerSelection = computerPlay();
     if (userSelection == computerSelection) {
-        console.log("Tied!");
+        console.log(`Tied! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        alert(`You chose ${userSelection}. Computer chose ${computerSelection}.`);
         return roundsTied = roundsTied + 1;
     } else if (userSelection == 'rock' && computerSelection == 'scissors') {
-        console.log("Winner!");
+        console.log(`Winner! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        alert(`You chose ${userSelection}. Computer chose ${computerSelection}.`);
         return roundsWon = roundsWon + 1;
     } else if (userSelection == 'rock' && computerSelection == 'paper') {
-        console.log("Loser!");
+        console.log(`Loser! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        alert(`You chose ${userSelection}. Computer chose ${computerSelection}.`);
         return roundsLost = roundsLost + 1;
     } else if (userSelection == 'scissors' && computerSelection == 'paper') {
-        console.log("Winner!");
+        console.log(`Winner! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        alert(`You chose ${userSelection}. Computer chose ${computerSelection}.`);
         return roundsWon = roundsWon + 1;
     } else if (userSelection == 'scissors' && computerSelection == 'rock') {
-        console.log("Loser!");
+        console.log(`Loser! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        alert(`You chose ${userSelection}. Computer chose ${computerSelection}.`);
         return roundsLost = roundsLost + 1;
     } else if (userSelection == 'paper' && computerSelection == 'rock') {
-        console.log("Winner!");
+        console.log(`Winner! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        alert(`You chose ${userSelection}. Computer chose ${computerSelection}.`);
         return roundsWon = roundsWon + 1;
     } else if (userSelection == 'paper' && computerSelection == 'scissors') {
-        console.log("Loser!");
+        console.log(`Loser! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        alert(`You chose ${userSelection}. Computer chose ${computerSelection}.`);
         return roundsLost = roundsLost + 1;
     }
 }
@@ -60,15 +77,12 @@ function playRound(userSelection, computerSelection) {
 //If round n <= 5, move to next round and store round and display wins/losses.
 function playGame() {
     for (i = 1; i <= 5; i++) {
-        userSelection = userPlay();
-        computerSelection = computerPlay();
-        playRound(userSelection, computerSelection);
-        console.log(`You chose ${userSelection}. Computer chose ${computerSelection}.`);
-        alert(`You chose ${userSelection}. Computer chose ${computerSelection}.
-        Rounds won: ${roundsWon} 
-        Rounds lost: ${roundsLost} 
-        Rounds tied: ${roundsTied}`);
-    }
+        playRound();
+        // alert(`
+        // Rounds won: ${roundsWon} 
+        // Rounds lost: ${roundsLost} 
+        // Rounds tied: ${roundsTied}`);
+    } 
 //Else tell user the outcome of the game.
 //    - If wins > losses, tell user rounds won/lost/tied, and who won/lost game.
     if (roundsWon > roundsLost) {
@@ -101,5 +115,7 @@ function playGame() {
     }
 }
 
-playGame();
+
+//playRound();
+//playGame();
 
