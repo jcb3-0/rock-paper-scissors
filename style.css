@@ -5,10 +5,18 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
-    color: cyan;
+    color: rgb(225, 225, 225); 
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+h1, h2 {
+    color: rgb(225, 225, 225);
+}
+h2 {
+    margin-top: 0;
 }
 
 #game {
@@ -24,7 +32,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #711c0b;
     margin: 16px;
     padding: 16px;
     border-radius: 5px;
@@ -33,6 +40,15 @@ body {
 
 #buttons {
     width: 75%;
+    margin: 5px;
     display: flex;
     justify-content: space-evenly;
+}
+
+button {
+    width: 75px;
+}
+
+button:hover {
+    background-color: grey;
 }

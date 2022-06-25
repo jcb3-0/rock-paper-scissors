@@ -48,16 +48,13 @@ const playGame = () => {
         score.style.textAlign = 'center';
     }
 }
-
-
-//Get input from user to store in usersPlay
+//Get input from user to store in userSelection
 rock.addEventListener('click', () => playRound('rock', computerSelection));
 rock.addEventListener('click', playGame);
 paper.addEventListener('click', () => playRound('paper', computerSelection));
 paper.addEventListener('click', playGame);
 scissors.addEventListener('click', () => playRound('scissors', computerSelection));
 scissors.addEventListener('click', playGame);
-
 start.addEventListener('click', newGame);
 
 //Generate a random play from computer.
@@ -81,7 +78,6 @@ function computerPlay() {
 //    - paper > rock
 //    - return who won
 function playRound(userSelection, computerSelection) {
-    //userSelection = userPlay();
     computerSelection = computerPlay();
     game.appendChild(playSelections);
     if (userSelection == computerSelection) {
@@ -108,21 +104,15 @@ function playRound(userSelection, computerSelection) {
     }
 }
 
-
+//Reset game
 function newGame() {
     roundsWon = 0;
     roundsLost = 0;
     roundsTied = 0;
     playSelections.remove();
-    score.style.color = 'cyan';
+    score.style.color = 'rgb(225, 225, 225)';
     score.style.fontSize = '16px';
     playGame();
-
-    
-   
-    
-    
-
 }
 
 
