@@ -10,6 +10,7 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const game = document.querySelector('#game');
 const score = document.createElement('div');
+const playSelections = document.createElement('div');
 const start = document.querySelector('#start');
 
 //Keeps score and determines win or lose
@@ -35,7 +36,7 @@ const playGame = () => {
         Rounds tied: ${roundsTied}`
         return;
     } else {
-        score.innerText = ` First to Five wins...
+        score.innerText = `First to Five wins...
         Rounds won: ${roundsWon} 
         Rounds lost: ${roundsLost} 
         Rounds tied: ${roundsTied}`
@@ -77,26 +78,27 @@ function computerPlay() {
 function playRound(userSelection, computerSelection) {
     //userSelection = userPlay();
     computerSelection = computerPlay();
+    game.appendChild(playSelections);
     if (userSelection == computerSelection) {
-        console.log(`Tied! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        playSelections.innerText = `Tied! You chose ${userSelection}. Computer chose ${computerSelection}.`;
         return roundsTied = roundsTied + 1;
     } else if (userSelection == 'rock' && computerSelection == 'scissors') {
-        console.log(`Winner! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        playSelections.innerText = `Winner! You chose ${userSelection}. Computer chose ${computerSelection}.`;
         return roundsWon = roundsWon + 1;
     } else if (userSelection == 'rock' && computerSelection == 'paper') {
-        console.log(`Loser! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        playSelections.innerText = `Loser! You chose ${userSelection}. Computer chose ${computerSelection}.`;
         return roundsLost = roundsLost + 1;
     } else if (userSelection == 'scissors' && computerSelection == 'paper') {
-        console.log(`Winner! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        playSelections.innerText = `Winner! You chose ${userSelection}. Computer chose ${computerSelection}.`;
         return roundsWon = roundsWon + 1;
     } else if (userSelection == 'scissors' && computerSelection == 'rock') {
-        console.log(`Loser! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        playSelections.innerText = `Loser! You chose ${userSelection}. Computer chose ${computerSelection}.`;
         return roundsLost = roundsLost + 1;
     } else if (userSelection == 'paper' && computerSelection == 'rock') {
-        console.log(`Winner! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        playSelections.innerText = `Winner! You chose ${userSelection}. Computer chose ${computerSelection}.`;
         return roundsWon = roundsWon + 1;
     } else if (userSelection == 'paper' && computerSelection == 'scissors') {
-        console.log(`Loser! You chose ${userSelection}. Computer chose ${computerSelection}.`);
+        playSelections.innerText = `Loser! You chose ${userSelection}. Computer chose ${computerSelection}.`;
         return roundsLost = roundsLost + 1;
     }
 }
@@ -106,6 +108,7 @@ function newGame() {
     roundsWon = 0;
     roundsLost = 0;
     roundsTied = 0;
+    playSelections.remove();
     playGame();
 
     
