@@ -28,3 +28,5 @@ At this point you should be using console.log() to display the results of each r
 Use prompt() to get input from the user. Read the docs here if you need to.
 
 Feel free to re-work your previous functions if you need to. Specifically, you might want to change the return value to something more useful.
+
+Free image used from https://www.nicepng.com/ourpic/u2q8u2a9a9o0t4w7_rock-paper-scissors-rock-paper-scissors-svg/

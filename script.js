@@ -20,6 +20,8 @@ const playGame = () => {
         Rounds won: ${roundsWon} 
         Rounds lost: ${roundsLost} 
         Rounds tied: ${roundsTied}`);
+        score.style.color = 'yellow';
+        score.style.fontSize = '24px';
         score.innerText = `Congratulations! You won!!! 
         Rounds won: ${roundsWon} 
         Rounds lost: ${roundsLost} 
@@ -30,17 +32,20 @@ const playGame = () => {
         Rounds won: ${roundsWon} 
         Rounds lost: ${roundsLost} 
         Rounds tied: ${roundsTied}`);
+        score.style.color = 'red';
+        score.style.fontSize = '24px';
         score.innerText = `Too bad. You lost! 
         Rounds won: ${roundsWon} 
         Rounds lost: ${roundsLost} 
-        Rounds tied: ${roundsTied}`
+        Rounds tied: ${roundsTied}`;
         return;
     } else {
         score.innerText = `First to Five wins...
         Rounds won: ${roundsWon} 
         Rounds lost: ${roundsLost} 
-        Rounds tied: ${roundsTied}`
+        Rounds tied: ${roundsTied}`;
         game.appendChild(score);
+        score.style.textAlign = 'center';
     }
 }
 
@@ -109,6 +114,8 @@ function newGame() {
     roundsLost = 0;
     roundsTied = 0;
     playSelections.remove();
+    score.style.color = 'cyan';
+    score.style.fontSize = '16px';
     playGame();
 
     
